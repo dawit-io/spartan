@@ -24,7 +24,7 @@ import { BrnInputOtpService } from './brn-input-otp.service';
 	},
 	providers: [BrnInputOtpService],
 	template: `
-	<input #focusElement [style]="_computedInputStyles()" (blur)="onBlur()"/>
+	<input #focusElement [type]="_computedInputType()" [inputMode]="_computedInputMode()" [style]="_computedInputStyles()" (blur)="onBlur()"/>
 	<ng-content></ng-content>
 	`,
 })
@@ -137,6 +137,14 @@ export class BrnInputOtpComponent implements ControlValueAccessor, OnInit {
 			'align-items': 'center',
 			gap: '0.5rem',
 		};
+	});
+
+	_computedInputType = computed(() => {
+		return this._brnInputOtpService.pattern === '^[0-9]$' ? 'number' : 'text';
+	});
+
+	_computedInputMode = computed(() => {
+		return this._brnInputOtpService.pattern === '^[0-9]$' ? 'numeric' : 'text';
 	});
 
 	_computedInputStyles = computed(() => {
