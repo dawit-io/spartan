@@ -12,7 +12,6 @@ import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators 
 import { HlmButtonDirective } from '../button/helm/src';
 import { HlmFormFieldModule } from '../form-field/helm/src';
 
-
 @Component({
 	selector: 'otp-input-component-tester',
 	template: `
@@ -47,14 +46,14 @@ import { HlmFormFieldModule } from '../form-field/helm/src';
 class InputOtpComponentTester {
 	otpLength = signal(8);
 	otpForm = inject(FormBuilder).group({
-		otp: new FormControl('', [Validators.required, completeOtpValidator(this.otpLength())])
+		otp: new FormControl('', [Validators.required, completeOtpValidator(this.otpLength())]),
 	});
 
-	onOtpComplete(value: string) { };
-	onOtpChange(value: string) { };
+	onOtpComplete(value: string) {}
+	onOtpChange(value: string) {}
 	onSubmit() {
 		this.otpForm.markAllAsTouched();
-	};
+	}
 }
 const meta: Meta<BrnInputOtpComponent> = {
 	title: 'Input Otp',
@@ -75,9 +74,7 @@ const meta: Meta<BrnInputOtpComponent> = {
 				ReactiveFormsModule,
 				HlmFormFieldModule,
 			],
-			declarations: [
-				InputOtpComponentTester
-			],
+			declarations: [InputOtpComponentTester],
 		}),
 	],
 };
@@ -86,12 +83,11 @@ export default meta;
 type Story = StoryObj<BrnInputOtpComponent>;
 
 export const Default: Story = {
-
 	render: () => ({
 		props: {
 			otpValue: '',
-			onOtpComplete: (value: string) => { },
-			onOtpChange: (value: string) => { },
+			onOtpComplete: (value: string) => {},
+			onOtpChange: (value: string) => {},
 		},
 		template: `
 			<div class="w-full flex justify-center">
@@ -121,7 +117,6 @@ export const Default: Story = {
 };
 
 export const Pattern: Story = {
-
 	render: () => ({
 		props: {
 			otpValue: '',
@@ -151,7 +146,6 @@ export const Pattern: Story = {
 };
 
 export const Separator: Story = {
-
 	render: () => ({
 		props: {
 			otpValue: '',
@@ -181,7 +175,6 @@ export const Separator: Story = {
 	}),
 };
 export const ReactiveFormControl: Story = {
-
 	render: () => ({
 		props: {
 			otpValue: '',

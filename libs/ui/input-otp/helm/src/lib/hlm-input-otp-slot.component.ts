@@ -20,7 +20,7 @@ export const inputOtpVariants = cva(
 			active: {
 				true: 'ring-2 ring-ring ring-offset-background z-10',
 			},
-		}
+		},
 	},
 );
 @Component({
@@ -45,13 +45,19 @@ export class HlmInputOtpSlotComponent {
 
 	isActive = computed(() => this.index === this._brnInputOtpService.activeSlot);
 	isComplete = computed(() => this._brnInputOtpService.otp.length === this._brnInputOtpService.length);
-	char = computed(() => this._brnInputOtpService.otp.length > this.index ? this._brnInputOtpService.otp[this.index] : '');
+	char = computed(() =>
+		this._brnInputOtpService.otp.length > this.index ? this._brnInputOtpService.otp[this.index] : '',
+	);
 	showError = computed(() => this._brnInputOtpService.isTouched && !this._brnInputOtpService.isValid);
 
-	_computedClass = computed(() => hlm(inputOtpVariants(
-		{
-			active: this.isActive() && !this.showError(),
-			activeError: this.isActive() && this.showError(),
-			error: this.showError()
-		}), this.userClass()));
+	_computedClass = computed(() =>
+		hlm(
+			inputOtpVariants({
+				active: this.isActive() && !this.showError(),
+				activeError: this.isActive() && this.showError(),
+				error: this.showError(),
+			}),
+			this.userClass(),
+		),
+	);
 }

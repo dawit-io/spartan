@@ -12,7 +12,13 @@ export * from './lib/hlm-input-otp-group.component';
 export * from './lib/hlm-input-otp-slot.component';
 export * from './lib/hlm-input-otp.component';
 
-export const HlmInputOtpImports = [HlmDotComponent, HlmFakeCaretComponent, HlmInputOtpGroupComponent, HlmInputOtpSlotComponent, HlmInputOtpComponent] as const;
+export const HlmInputOtpImports = [
+	HlmDotComponent,
+	HlmFakeCaretComponent,
+	HlmInputOtpGroupComponent,
+	HlmInputOtpSlotComponent,
+	HlmInputOtpComponent,
+] as const;
 
 @NgModule({
 	imports: [...HlmInputOtpImports],
