@@ -203,6 +203,7 @@ The following is the list of supported scopes:
 - **separator**
 - **sheet**
 - **skeleton**
+- **sidebar**
 - **slider**
 - **switch**
 - **table**
