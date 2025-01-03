@@ -43,6 +43,7 @@ module.exports = {
 				'separator',
 				'sheet',
 				'skeleton',
+				'sidebar',
 				'slider',
 				'sonner',
 				'spinner',
