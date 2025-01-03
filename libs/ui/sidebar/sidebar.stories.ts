@@ -66,7 +66,14 @@ type Story = StoryObj<HlmSidebarComponent>;
 
 export const Basic: Story = {
 	render: ({ ...args }) => ({
-		props: args,
+		props: {
+            ...args,
+            items: [
+                { icon: 'lucideLayoutDashboard', label: 'Dashboard' },
+                { icon: 'lucideCalendar', label: 'Calendar' },
+                { icon: 'lucideInbox', label: 'Inbox' }
+            ]
+        },
 		template: `
       <div class="flex h-[400px] border rounded-lg">
         <hlm-sidebar>
@@ -78,18 +85,11 @@ export const Basic: Story = {
           </hlm-sidebar-header>
 
           <hlm-sidebar-nav class="mt-4">
-            <hlm-sidebar-item>
-              <hlm-icon name="lucideLayoutDashboard" class="h-4 w-4" />
-              Dashboard
-            </hlm-sidebar-item>
-            <hlm-sidebar-item>
-              <hlm-icon name="lucideCalendar" class="h-4 w-4" />
-              Calendar
-            </hlm-sidebar-item>
-            <hlm-sidebar-item>
-              <hlm-icon name="lucideInbox" class="h-4 w-4" />
-              Inbox
-            </hlm-sidebar-item>
+            @for(item of items; track item.icon) {
+              <hlm-sidebar-item [label]="item.label">
+                <hlm-icon [name]="item.icon" class="h-4 w-4" />
+              </hlm-sidebar-item>
+            }
           </hlm-sidebar-nav>
         </hlm-sidebar>
 
@@ -109,7 +109,19 @@ export const Basic: Story = {
 
 export const WithSubmenus: Story = {
 	render: ({ ...args }) => ({
-		props: args,
+		props: {
+            ...args,
+            settingsItems: [
+                { label: 'Profile' },
+                { label: 'Account' },
+                { label: 'Security' }
+            ],
+            teamItems: [
+                { label: 'Members' },
+                { label: 'Invites' },
+                { label: 'Roles' }
+            ]
+        },
 		template: `
       <div class="flex h-[600px] border rounded-lg">
         <hlm-sidebar>
@@ -121,32 +133,29 @@ export const WithSubmenus: Story = {
           </hlm-sidebar-header>
 
           <hlm-sidebar-nav class="mt-4">
-            <hlm-sidebar-item>
+            <hlm-sidebar-item label="Dashboard">
               <hlm-icon name="lucideLayoutDashboard" class="h-4 w-4" />
-              Dashboard
             </hlm-sidebar-item>
 
             <hlm-sidebar-group class="mt-4">
-              <hlm-sidebar-item>
+              <hlm-sidebar-item label="Settings">
                 <hlm-icon name="lucideSettings" class="h-4 w-4" />
-                Settings
               </hlm-sidebar-item>
               <hlm-sidebar-group-content>
-                <hlm-sidebar-item>Profile</hlm-sidebar-item>
-                <hlm-sidebar-item>Account</hlm-sidebar-item>
-                <hlm-sidebar-item>Security</hlm-sidebar-item>
+                @for(item of settingsItems; track item.label) {
+                  <hlm-sidebar-item [label]="item.label"/>
+                }
               </hlm-sidebar-group-content>
             </hlm-sidebar-group>
 
             <hlm-sidebar-group class="mt-4">
-              <hlm-sidebar-item>
+              <hlm-sidebar-item label="Team">
                 <hlm-icon name="lucideUsers" class="h-4 w-4" />
-                Team
               </hlm-sidebar-item>
               <hlm-sidebar-group-content>
-                <hlm-sidebar-item>Members</hlm-sidebar-item>
-                <hlm-sidebar-item>Invites</hlm-sidebar-item>
-                <hlm-sidebar-item>Roles</hlm-sidebar-item>
+                @for(item of teamItems; track item.label) {
+                  <hlm-sidebar-item [label]="item.label"/>
+                }
               </hlm-sidebar-group-content>
             </hlm-sidebar-group>
 
