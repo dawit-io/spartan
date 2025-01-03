@@ -67,13 +67,13 @@ type Story = StoryObj<HlmSidebarComponent>;
 export const Basic: Story = {
 	render: ({ ...args }) => ({
 		props: {
-            ...args,
-            items: [
-                { icon: 'lucideLayoutDashboard', label: 'Dashboard' },
-                { icon: 'lucideCalendar', label: 'Calendar' },
-                { icon: 'lucideInbox', label: 'Inbox' }
-            ]
-        },
+			...args,
+			items: [
+				{ icon: 'lucideLayoutDashboard', label: 'Dashboard' },
+				{ icon: 'lucideCalendar', label: 'Calendar' },
+				{ icon: 'lucideInbox', label: 'Inbox' },
+			],
+		},
 		template: `
       <div class="flex h-[400px] border rounded-lg">
         <hlm-sidebar>
@@ -110,18 +110,10 @@ export const Basic: Story = {
 export const WithSubmenus: Story = {
 	render: ({ ...args }) => ({
 		props: {
-            ...args,
-            settingsItems: [
-                { label: 'Profile' },
-                { label: 'Account' },
-                { label: 'Security' }
-            ],
-            teamItems: [
-                { label: 'Members' },
-                { label: 'Invites' },
-                { label: 'Roles' }
-            ]
-        },
+			...args,
+			settingsItems: [{ label: 'Profile' }, { label: 'Account' }, { label: 'Security' }],
+			teamItems: [{ label: 'Members' }, { label: 'Invites' }, { label: 'Roles' }],
+		},
 		template: `
       <div class="flex h-[600px] border rounded-lg">
         <hlm-sidebar>

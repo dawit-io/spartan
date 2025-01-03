@@ -15,14 +15,14 @@ import { ClassValue } from 'clsx';
 				<div class="transition-transform duration-200 ease-in-out group-hover:scale-110">
 					<ng-content select="hlm-icon" />
 				</div>
-				<span class="ml-2 overflow-hidden truncate">{{label}}</span>
+				<span class="ml-2 overflow-hidden truncate">{{ label }}</span>
 			</div>
 			<div
-        *ngIf="!_sidebarService.isExpanded()"
-        class="invisible absolute left-full top-1/2 z-10 ml-2 -translate-y-1/2 rounded-md bg-black px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:visible group-hover:opacity-100"
-      >
-        {{label}}
-      </div>
+				*ngIf="!_sidebarService.isExpanded()"
+				class="invisible absolute left-full top-1/2 z-10 ml-2 -translate-y-1/2 rounded-md bg-black px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:visible group-hover:opacity-100"
+			>
+				{{ label }}
+			</div>
 		</button>
 	`,
 })
