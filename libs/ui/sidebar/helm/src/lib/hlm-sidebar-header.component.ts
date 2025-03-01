@@ -1,27 +1,27 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { BrnSidebarService } from '@spartan-ng/brain/sidebar';
 import { hlm } from '@spartan-ng/brain/core';
+import { BrnSidebarService } from '@spartan-ng/brain/sidebar';
 import { ClassValue } from 'clsx';
 
 @Component({
-  selector: 'hlm-sidebar-header',
-  standalone: true,
-  host: {
-    '[class]': '_computedClass()',
-  },
-  template: `
+	selector: 'hlm-sidebar-header',
+	standalone: true,
+	host: {
+		'[class]': '_computedClass()',
+	},
+	template: `
 		<ng-content />
 	`,
 })
 export class HlmSidebarHeaderComponent {
-  private readonly _sidebarService = inject(BrnSidebarService);
+	private readonly _sidebarService = inject(BrnSidebarService);
 
-  public readonly userClass = input<ClassValue>('', { alias: 'class' });
-  protected readonly _computedClass = computed(() =>
-    hlm(
-      'flex items-center px-3 py-2 text-foreground',
-      !this._sidebarService.isExpanded() ? 'justify-center' : '',
-      this.userClass()
-    )
-  );
+	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	protected readonly _computedClass = computed(() =>
+		hlm(
+			'flex items-center px-3 py-2 text-foreground',
+			!this._sidebarService.isExpanded() ? 'justify-center' : '',
+			this.userClass(),
+		),
+	);
 }

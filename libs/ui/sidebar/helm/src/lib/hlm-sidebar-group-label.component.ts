@@ -1,12 +1,10 @@
-import { Component, computed, input, inject } from '@angular/core';
-import { hlm } from '@spartan-ng/brain/core';
-import { ClassValue } from 'clsx';
-import { BrnSidebarGroupLabelDirective } from '@spartan-ng/brain/sidebar';
-import { BrnSidebarGroupDirective } from '@spartan-ng/brain/sidebar';
-import { BrnSidebarService } from '@spartan-ng/brain/sidebar';
+import { Component, computed, inject, input } from '@angular/core';
 import { provideIcons } from '@ng-icons/core';
 import { lucideChevronDown } from '@ng-icons/lucide';
+import { hlm } from '@spartan-ng/brain/core';
+import { BrnSidebarGroupDirective, BrnSidebarGroupLabelDirective, BrnSidebarService } from '@spartan-ng/brain/sidebar';
 import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
+import { ClassValue } from 'clsx';
 
 @Component({
 	selector: 'hlm-sidebar-group-label',

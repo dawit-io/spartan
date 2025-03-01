@@ -1,9 +1,9 @@
-import { Component, computed, inject, input, output } from '@angular/core';
-import { BrnSidebarService } from '@spartan-ng/brain/sidebar';
-import { hlm } from '@spartan-ng/brain/core';
-import { ClassValue } from 'clsx';
-import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { CommonModule } from '@angular/common';
+import { Component, computed, inject, input, output } from '@angular/core';
+import { hlm } from '@spartan-ng/brain/core';
+import { BrnSidebarService } from '@spartan-ng/brain/sidebar';
+import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+import { ClassValue } from 'clsx';
 
 @Component({
 	selector: 'hlm-sidebar-item',

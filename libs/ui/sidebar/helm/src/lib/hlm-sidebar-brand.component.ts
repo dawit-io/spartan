@@ -1,6 +1,6 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { BrnSidebarService } from '@spartan-ng/brain/sidebar';
 import { hlm } from '@spartan-ng/brain/core';
+import { BrnSidebarService } from '@spartan-ng/brain/sidebar';
 import { ClassValue } from 'clsx';
 
 @Component({
@@ -16,14 +16,14 @@ import { ClassValue } from 'clsx';
 					<ng-content select="ng-icon" />
 				</div>
 				<span class="truncate text-lg font-semibold">
-          <ng-content />
-        </span>
+					<ng-content />
+				</span>
 			</div>
 		</div>
 	`,
 })
 export class HlmSidebarBrandComponent {
-  protected readonly _sidebarService = inject(BrnSidebarService);
+	protected readonly _sidebarService = inject(BrnSidebarService);
 	public readonly userClass = input<ClassValue>('', { alias: 'class' });
 	protected readonly _computedClass = computed(() => hlm('flex items-center min-w-0', this.userClass()));
 }
