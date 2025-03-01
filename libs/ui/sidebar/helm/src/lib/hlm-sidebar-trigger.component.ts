@@ -1,33 +1,42 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { lucidePanelLeft, lucidePanelRight } from '@ng-icons/lucide';
+import { hlm } from '@spartan-ng/brain/core';
 import { BrnSidebarService, BrnSidebarTriggerDirective } from '@spartan-ng/brain/sidebar';
-import { hlm } from '@spartan-ng/ui-core';
-import { HlmIconComponent, provideIcons } from '@spartan-ng/ui-icon-helm';
+import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 import { ClassValue } from 'clsx';
 
 @Component({
 	selector: 'hlm-sidebar-trigger',
 	standalone: true,
-	imports: [HlmIconComponent, BrnSidebarTriggerDirective],
-	providers: [provideIcons({ lucidePanelLeft, lucidePanelRight })],
+	imports: [HlmIconDirective, BrnSidebarTriggerDirective, NgIconComponent],
+	providers: [
+		provideIcons({
+			lucidePanelLeft,
+			lucidePanelRight,
+		}),
+	],
 	host: {
 		'[class]': '_computedClass()',
 	},
 	template: `
 		<button brnSidebarTrigger class="inline-flex items-center justify-center">
-			<hlm-icon [name]="_sidebarService.isExpanded() ? 'lucidePanelLeft' : 'lucidePanelRight'" class="h-4 w-4" />
+			<ng-icon
+				hlm
+				[name]="_sidebarService.isExpanded() ? 'lucidePanelLeft' : 'lucidePanelRight'"
+				class="text-foreground h-4 w-4"
+			/>
 		</button>
 	`,
 })
 export class HlmSidebarTriggerComponent {
-	constructor(protected readonly _sidebarService: BrnSidebarService) {}
-
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
-
+	protected readonly _sidebarService = inject(BrnSidebarService);
 	protected readonly _computedClass = computed(() =>
 		hlm(
 			'inline-flex items-center justify-center rounded-sm hover:bg-accent hover:text-accent-foreground',
 			this.userClass(),
 		),
 	);
+
+	public readonly userClass = input<ClassValue>('', { alias: 'class' });
 }

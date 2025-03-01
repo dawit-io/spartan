@@ -9,6 +9,9 @@ import { HlmSidebarItemComponent } from './lib/hlm-sidebar-item.component';
 import { HlmSidebarNavComponent } from './lib/hlm-sidebar-nav.component';
 import { HlmSidebarTriggerComponent } from './lib/hlm-sidebar-trigger.component';
 import { HlmSidebarComponent } from './lib/hlm-sidebar.component';
+import { HlmSidebarFooterComponent } from './lib/hlm-sidebar-footer.component';
+import { HlmSidebarInsetComponent } from './lib/hlm-sidebar-inset.component';
+import { HlmSidebarSectionTitleDirective } from './lib/hlm-sidebar-section-title.directive';
 
 export * from './lib/hlm-sidebar-brand.component';
 export * from './lib/hlm-sidebar-content-header.component';
@@ -20,6 +23,9 @@ export * from './lib/hlm-sidebar-item.component';
 export * from './lib/hlm-sidebar-nav.component';
 export * from './lib/hlm-sidebar-trigger.component';
 export * from './lib/hlm-sidebar.component';
+export * from './lib/hlm-sidebar-footer.component';
+export * from './lib/hlm-sidebar-inset.component';
+export * from './lib/hlm-sidebar-section-title.directive';
 
 export const HlmSidebarImports = [
 	HlmSidebarComponent,
@@ -32,6 +38,9 @@ export const HlmSidebarImports = [
 	HlmSidebarGroupComponent,
 	HlmSidebarGroupLabelComponent,
 	HlmSidebarGroupContentComponent,
+	HlmSidebarFooterComponent,
+	HlmSidebarInsetComponent,
+	HlmSidebarSectionTitleDirective,
 ] as const;
 
 @NgModule({

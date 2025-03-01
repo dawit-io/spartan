@@ -6,7 +6,6 @@ import { Directive, HostBinding, Input } from '@angular/core';
 })
 export class BrnSidebarNavItemDirective {
 	@Input() icon?: string;
-
 	@HostBinding('class') class = 'brn-sidebar-nav-item';
 	@HostBinding('class.active') @Input() isActive: boolean | undefined;
 	@HostBinding('attr.aria-current') get ariaCurrentValue() {

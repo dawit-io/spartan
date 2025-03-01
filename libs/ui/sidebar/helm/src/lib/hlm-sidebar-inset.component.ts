@@ -3,17 +3,17 @@ import { hlm } from '@spartan-ng/brain/core';
 import { ClassValue } from 'clsx';
 
 @Component({
-	selector: 'hlm-sidebar-nav',
+	selector: 'hlm-sidebar-inset',
 	standalone: true,
-	host: {
-		'[class]': '_computedClass()',
-	},
 	template: `
 		<ng-content />
 	`,
+	host: {
+		'[class]': '_computedClass()',
+	},
 })
-export class HlmSidebarNavComponent {
+export class HlmSidebarInsetComponent {
 	public readonly userClass = input<ClassValue>('', { alias: 'class' });
 
-	protected readonly _computedClass = computed(() => hlm('flex flex-col gap-1 px-3', this.userClass()));
+	protected readonly _computedClass = computed(() => hlm('relative', '[&>*]:p-6', this.userClass()));
 }

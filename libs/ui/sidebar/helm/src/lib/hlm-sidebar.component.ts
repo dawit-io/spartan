@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { BrnSidebarComponent } from '@spartan-ng/brain/sidebar';
-import { hlm } from '@spartan-ng/ui-core';
+import { hlm } from '@spartan-ng/brain/core';
 import { ClassValue } from 'clsx';
 
 @Component({
@@ -9,30 +9,58 @@ import { ClassValue } from 'clsx';
 	host: {
 		'[class]': '_computedClass()',
 		'[attr.data-state]': 'sidebarService.isExpanded() ? "expanded" : "collapsed"',
+		'[attr.data-collapsible]': 'sidebarService.collapsibleMode()',
+		'[style.scrollbar-width]': '"thin"',
+		'[style.scrollbar-color]': '_computedScrollbarColor()',
 	},
 	template: `
-		<ng-content />
+		<div class="flex h-full flex-col">
+			<ng-content />
+		</div>
 	`,
 })
 export class HlmSidebarComponent extends BrnSidebarComponent {
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
-
 	protected get sidebarService() {
 		return this._sidebarService;
 	}
-
 	protected readonly _computedClass = computed(() =>
 		hlm(
-			'relative z-50 flex h-screen flex-col flex-none overflow-y-auto border-r border-border bg-background transition-all duration-300',
-			this.sidebarService.isMobile() && this.sidebarService.isOverlay()
-				? 'fixed inset-0 z-50 bg-background/80 backdrop-blur [@slideInLeft] [@slideOutLeft]'
-				: '',
-			this.sidebarService.isMobile() && !this.sidebarService.isOverlay() ? 'hidden' : '',
-			!this.sidebarService.isMobile() && 'data-[state=expanded]:w-56 data-[state=collapsed]:w-16',
-			'data-[state=collapsed]:px-2',
+			'relative z-40 flex h-full overflow-y-auto flex-col flex-none border-r border-border bg-background transition-all duration-200',
+
+			// Variant styles
+			this.sidebarService.variant() === 'sidebar' && ['sticky top-0 left-0', 'shrink-0'],
+			this.sidebarService.variant() === 'floating' && ['absolute shadow-lg', 'bg-popover text-popover-foreground'],
+			this.sidebarService.variant() === 'inset' && ['border rounded-lg m-4', 'bg-card text-card-foreground'],
+
+			// Collapsible mode styles
+			this.sidebarService.collapsibleMode() === 'offcanvas' && [
+				'w-64',
+				'transform',
+				'data-[state=collapsed]:-translate-x-full',
+				'data-[state=collapsed]:absolute',
+				'data-[state=collapsed]:opacity-0',
+				'data-[state=expanded]:translate-x-0',
+				'data-[state=expanded]:opacity-100',
+			],
+
+			this.sidebarService.collapsibleMode() === 'icon' && [
+				'w-64 data-[state=collapsed]:w-16',
+				'data-[state=collapsed]:transition-[width]',
+			],
+
+			this.sidebarService.collapsibleMode() === 'none' && ['w-64', 'transition-none'],
+
+			// Common styles for expanded/collapsed states
+			'data-[state=expanded]:w-64',
 			'[&_span]:data-[state=collapsed]:hidden [&_span]:data-[state=expanded]:inline',
-			'[&_hlm-icon]:data-[state=collapsed]:mx-auto',
+			'[&_ng-icon]:data-[state=collapsed]:mx-auto',
+
 			this.userClass(),
 		),
+	);
+
+	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	protected readonly _computedScrollbarColor = computed(
+		() => 'var(--muted-foreground, hsl(var(--muted-foreground))) var(--border-color, hsl(var(--muted)))',
 	);
 }
