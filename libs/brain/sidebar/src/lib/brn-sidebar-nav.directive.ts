@@ -5,11 +5,12 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
 	standalone: true,
 })
 export class BrnSidebarNavDirective {
-	@HostBinding('attr.role') role = 'navigation';
-	@HostBinding('tabindex') tabindex = 0;
-	@HostBinding('attr.aria-label') ariaLabel = 'Sidebar Navigation';
+	@HostBinding('attr.role') public role = 'navigation';
+	@HostBinding('tabindex') public tabindex = 0;
+	@HostBinding('attr.aria-label') public ariaLabel = 'Sidebar Navigation';
+
 	@HostListener('keydown', ['$event'])
-	onKeyDown(event: KeyboardEvent) {
+	public onKeyDown(_event: KeyboardEvent) {
 		// TODO: Implement keyboard navigation logic
 	}
 }

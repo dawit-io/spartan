@@ -11,10 +11,10 @@ let nextId = 0;
 	},
 })
 export class BrnSidebarGroupLabelDirective {
-	private readonly id = `brn-sidebar-group-label-${nextId++}`;
+	private readonly _id = `brn-sidebar-group-label-${nextId++}`;
 	private readonly _group = inject(BrnSidebarGroupDirective);
 
 	constructor() {
-		this._group.labelId.set(this.id);
+		this._group.labelId.set(this._id);
 	}
 }
