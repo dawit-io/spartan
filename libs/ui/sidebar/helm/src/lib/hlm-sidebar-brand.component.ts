@@ -24,6 +24,6 @@ import { ClassValue } from 'clsx';
 })
 export class HlmSidebarBrandComponent {
 	protected readonly _sidebarService = inject(BrnSidebarService);
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 	protected readonly _computedClass = computed(() => hlm('flex items-center min-w-0', this.userClass()));
 }

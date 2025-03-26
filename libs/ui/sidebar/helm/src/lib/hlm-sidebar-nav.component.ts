@@ -13,7 +13,7 @@ import { ClassValue } from 'clsx';
 	`,
 })
 export class HlmSidebarNavComponent {
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 
 	protected readonly _computedClass = computed(() => hlm('flex flex-col gap-1 px-3', this.userClass()));
 }

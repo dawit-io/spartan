@@ -37,7 +37,7 @@ export class HlmSidebarGroupLabelComponent {
 	protected readonly _sidebarService = inject(BrnSidebarService);
 	protected readonly _group = inject(BrnSidebarGroupDirective);
 	public label = input('');
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 
 	protected readonly _computedClass = computed(() =>
 		hlm(

@@ -15,7 +15,7 @@ import { ClassValue } from 'clsx';
 	`,
 })
 export class HlmSidebarGroupComponent {
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 
 	protected readonly _computedClass = computed(() => hlm('flex flex-col gap-1', this.userClass()));
 }

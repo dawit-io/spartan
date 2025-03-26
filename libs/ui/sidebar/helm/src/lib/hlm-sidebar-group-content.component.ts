@@ -30,7 +30,7 @@ export class HlmSidebarGroupContentComponent {
 	protected readonly _group = inject(BrnSidebarGroupDirective);
 	protected readonly _sidebarService = inject(BrnSidebarService);
 
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 
 	protected readonly _computedClass = computed(() =>
 		hlm('data-[state=collapsed]:hidden', 'transition-all duration-200 ease-in-out', this.userClass()),

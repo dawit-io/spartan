@@ -38,5 +38,5 @@ export class HlmSidebarTriggerComponent {
 		),
 	);
 
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 }

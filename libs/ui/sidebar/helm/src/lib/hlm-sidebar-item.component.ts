@@ -46,6 +46,6 @@ export class HlmSidebarItemComponent {
 	protected readonly _computedClass = computed(() => hlm('block', this.userClass()));
 
 	public readonly clicked = output<void>();
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 	public readonly label = input.required<string>();
 }

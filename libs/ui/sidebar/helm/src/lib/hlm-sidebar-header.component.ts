@@ -16,7 +16,7 @@ import { ClassValue } from 'clsx';
 export class HlmSidebarHeaderComponent {
 	private readonly _sidebarService = inject(BrnSidebarService);
 
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 	protected readonly _computedClass = computed(() =>
 		hlm(
 			'flex items-center px-3 py-2 text-foreground',

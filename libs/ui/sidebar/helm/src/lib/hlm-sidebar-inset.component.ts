@@ -13,7 +13,7 @@ import { ClassValue } from 'clsx';
 	},
 })
 export class HlmSidebarInsetComponent {
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 
 	protected readonly _computedClass = computed(() => hlm('relative', '[&>*]:p-6', this.userClass()));
 }

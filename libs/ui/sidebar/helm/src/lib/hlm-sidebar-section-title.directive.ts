@@ -12,7 +12,7 @@ import { ClassValue } from 'clsx';
 	},
 })
 export class HlmSidebarSectionTitleDirective {
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 
 	protected readonly sidebarService = inject(BrnSidebarService);
 	protected readonly _computedClass = computed(() =>

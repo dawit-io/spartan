@@ -59,7 +59,7 @@ export class HlmSidebarComponent extends BrnSidebarComponent {
 		),
 	);
 
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 	protected readonly _computedScrollbarColor = computed(
 		() => 'var(--muted-foreground, hsl(var(--muted-foreground))) var(--border-color, hsl(var(--muted)))',
 	);

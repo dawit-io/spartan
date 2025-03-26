@@ -51,7 +51,7 @@ export class HlmSidebarFooterComponent {
 	protected readonly _sidebarService = inject(BrnSidebarService);
 
 	public readonly clicked = output<void>();
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 	public readonly title = input.required<string>();
 	public readonly subtitle = input.required<string>();
 

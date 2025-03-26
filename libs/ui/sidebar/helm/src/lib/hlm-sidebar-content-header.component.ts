@@ -13,7 +13,7 @@ import { ClassValue } from 'clsx';
 	`,
 })
 export class HlmSidebarContentHeaderComponent {
-	public readonly userClass = input<ClassValue>('', { alias: 'class' });
+	public readonly userClass = input<ClassValue>('');
 	public readonly withBorder = input<boolean>(false);
 
 	protected readonly _computedClass = computed(() =>
